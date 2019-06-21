@@ -1,0 +1,16 @@
+.btn-circle {
+  padding: 3px 3px 3px 3px;
+  border-radius: 50%;
+}
+
+.page-footer {
+    background-color: #212121 !important;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12) !important;
+}
+
+.form-control {
+    background-color: #fff !important;
+}
+.form-group {
+	margin-bottom: 0 !important;
+}
