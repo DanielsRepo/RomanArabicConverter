@@ -22,10 +22,11 @@ class ConverterForm(forms.ModelForm):
             'XD', 'LD', 'IC', 'VC', 'LC', 'IL', 'VL', 'VX'
         )
 
-        if number.isdigit() and int(number) == 0:
-            raise ValidationError("There is no zero in Roman numerals")
-        elif number.isdigit() and int(number) > 3999:
-            raise ValidationError("Number should be less than 3999")
+        if number.isdigit():
+            if int(number) == 0:
+                raise ValidationError("There is no zero in Roman numerals")
+            elif int(number) > 3999:
+                raise ValidationError("Number should be less than 3999")
         elif bool(re.match("^(?=.*[a-zA-Zа-яА-Я])(?=.*[0-9])|(?=.*\W)", number)):
             raise ValidationError("Type either arabic or roman number in field")
         elif number.isalpha():
