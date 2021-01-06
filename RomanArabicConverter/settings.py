@@ -2,9 +2,7 @@ import os
 import environ
 
 
-env = environ.Env(
-    DEBUG=(bool, True)
-)
+env = environ.Env()
 environ.Env.read_env()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,7 +11,7 @@ DEBUG = env('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,9 +57,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'RomanArabicConverter.wsgi.application'
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('POSTGRES_DB'),
+        'USER' : env('POSTGRES_USER'),
+        'PASSWORD' : env('POSTGRES_PASSWORD'),
+        'HOST' : env('POSTGRES_HOST'),
+        'PORT' : env('POSTGRES_PORT'),
     }
 }
 
