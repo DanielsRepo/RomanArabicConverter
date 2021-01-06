@@ -84,6 +84,8 @@ target/
 __pycache__/
 local_settings.py
 
+migrations/
+
 db.sqlite3
 
 .idea
